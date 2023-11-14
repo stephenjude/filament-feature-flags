@@ -35,12 +35,12 @@ class FeatureSegment extends Model
 
     public function title(): Attribute
     {
-        return Attribute::get(fn() => $this->feature::title());
+        return Attribute::get(fn () => $this->feature::title());
     }
 
     public function description(): Attribute
     {
-        return Attribute::get(fn() => sprintf(
+        return Attribute::get(fn () => sprintf(
             '%s %s for customers who have any of these %s — %s.',
             $this->title,
             $this->active ? 'activated' : 'deactivated',
@@ -52,7 +52,7 @@ class FeatureSegment extends Model
     public static function allFeatures(): array
     {
         return collect(Feature::all())
-            ->map(fn($value, $key) => [
+            ->map(fn ($value, $key) => [
                 'id' => $key,
                 'name' => $name = str(class_basename($key))->snake()->replace('_', ' ')->title()->toString(),
                 'state' => $value,
@@ -71,8 +71,7 @@ class FeatureSegment extends Model
     {
         return collect(config('filament-feature-flags.segments'))
             ->pluck('column')
-            ->mapWithKeys(fn($segment) => [$segment => str($segment)->plural()->title()->toString()])
+            ->mapWithKeys(fn ($segment) => [$segment => str($segment)->plural()->title()->toString()])
             ->toArray();
     }
-
 }
