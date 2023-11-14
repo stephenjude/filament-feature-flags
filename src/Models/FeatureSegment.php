@@ -26,10 +26,6 @@ class FeatureSegment extends Model
     {
         $defaultState = config('filament-feature-flags.default');
 
-        if (!is_a($scope, config('filament-feature-flags.scope'))) {
-            return $defaultState;
-        }
-
         if (in_array($scope->{$this->scope}, $this->values, true)) {
             return $this->active;
         }
@@ -45,10 +41,10 @@ class FeatureSegment extends Model
     public function description(): Attribute
     {
         return Attribute::get(fn() => sprintf(
-            '%s %s for customers who belong to this scope: %s — %s.',
+            '%s %s for customers who have any of these %s — %s.',
             $this->title,
             $this->active ? 'activated' : 'deactivated',
-            $this->scope,
+            str($this->scope)->plural(),
             implode(', ', $this->values)
         ));
     }
@@ -73,10 +69,9 @@ class FeatureSegment extends Model
 
     public static function segmentOptionsList(): array
     {
-        $segments = config('filament-feature-flags.segments');
-
-        return collect(array_combine($segments, $segments))
-            ->map(fn($segment) => str($segment)->plural())
+        return collect(config('filament-feature-flags.segments'))
+            ->pluck('column')
+            ->mapWithKeys(fn($segment) => [$segment => str($segment)->plural()->title()->toString()])
             ->toArray();
     }
 

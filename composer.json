@@ -18,8 +18,8 @@
     "require": {
         "php": "^8.1",
         "spatie/laravel-package-tools": "^1.14.0",
-        "filament/filament": "^3.0.0",
-        "laravel/pennant": "^1.10",
+        "filament/filament": "^3.0",
+        "laravel/pennant": "^1.5",
         "illuminate/contracts": "^10.0"
     },
     "require-dev": {
@@ -70,11 +70,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "FeatureFlagPluginServiceProvider"
-            ],
-            "aliases": {
-                "FeaturePlugin": "Stephenjude\\FeaturePlugin\\Facades\\FeaturePlugin"
-            }
+                "Stephenjude\\FeaturePlugin\\FeatureFlagPluginServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

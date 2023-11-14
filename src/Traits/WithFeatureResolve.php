@@ -2,7 +2,6 @@
 
 namespace Stephenjude\FeaturePlugin\Traits;
 
-use App\Models\User;
 use Laravel\Pennant\Feature;
 use Stephenjude\FeaturePlugin\Models\FeatureSegment;
 
@@ -13,15 +12,24 @@ trait WithFeatureResolve
      */
     public function resolve(mixed $scope): bool
     {
+        $defaultState = config('filament-feature-flags.default');
+
+        if (!is_a($scope, config('filament-feature-flags.scope'))) {
+            return $defaultState;
+        }
+
         $segments = FeatureSegment::where('feature', get_class($this))->cursor();
 
+        if ($segments->count()) {
+            return $defaultState;
+        }
 
         return $segments->contains(fn(FeatureSegment $segment) => $segment->resolve($scope));
     }
 
     public static function title(): string
     {
-        return str(class_basename(self::class))->snake()->replace('_', ' ')->ucfirst()->toString();
+        return str(class_basename(self::class))->snake()->replace('_', ' ')->title()->toString();
     }
 
     public static function description(): string

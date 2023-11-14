@@ -13,7 +13,7 @@ return [
     /*
      * Default scope: User::class, Team::class
      */
-    'scope' => App\Model\User::class,
+    'scope' => App\Models\User::class,
 
     /*
      * Column names and data source that can be used to activate or deactivate for a segment of users.
@@ -27,7 +27,7 @@ return [
         [
             'column' => 'email',
             'source' => [
-                'model' => App\Model\User::class,
+                'model' => App\Models\User::class,
                 'value' => 'email',
                 'key' => 'email',
             ],
@@ -52,6 +52,11 @@ return [
          * Navigation item label for admin panel resource.
          */
         'label' => 'Manage Features',
+
+        /*
+         * Resource title for admin panel resource.
+         */
+        'title' => 'Manage Features & Segments',
 
         /*
          * Navigation item icon for admin panel resource.

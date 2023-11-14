@@ -2,7 +2,9 @@
 
 namespace Stephenjude\FeaturePlugin;
 
-use App\Filament\Resources\FeatureResource\FeatureSegmentResource;
+use Filament\Contracts\Plugin;
+use Filament\Panel;
+use Stephenjude\FeaturePlugin\Resources\FeatureSegmentResource;
 
 class FeatureFlagPlugin implements Plugin
 {
@@ -13,10 +15,9 @@ class FeatureFlagPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->resources([
-                FeatureSegmentResource::class,
-            ]);
+        $panel->resources([
+            FeatureSegmentResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void
