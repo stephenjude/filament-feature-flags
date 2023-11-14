@@ -4,7 +4,7 @@ namespace Stephenjude\FeaturePlugin\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Stephenjude\FeaturePlugin\FeaturePluginServiceProvider;
+use Stephenjude\FeaturePlugin\FeatureFlagPluginServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -20,7 +20,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            FeaturePluginServiceProvider::class,
+            FeatureFlagPluginServiceProvider::class,
         ];
     }
 

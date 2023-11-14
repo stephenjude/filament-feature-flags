@@ -6,7 +6,7 @@ use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Stephenjude\FeaturePlugin\Commands\FeaturePluginCommand;
 
-class FeaturePluginServiceProvider extends PackageServiceProvider
+class FeatureFlagPluginServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
