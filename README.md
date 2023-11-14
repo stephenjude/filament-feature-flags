@@ -19,7 +19,11 @@ You can install the package via composer and publish and run the migrations with
 
 ```bash
 composer require stephenjude/filament-feature-flags
+
+php artisan vendor:publish --provider="Laravel\Pennant\PennantServiceProvider"
+
 php artisan vendor:publish --tag="filament-feature-flags-migrations"
+
 php artisan migrate
 ```
 
@@ -36,6 +40,7 @@ public function panel(Panel $panel): Panel
         );
 }
 ```
+
 ### Create Class Based Feature
 
 To create a class based feature, you may invoke the pennant:feature Artisan command.
@@ -44,8 +49,52 @@ To create a class based feature, you may invoke the pennant:feature Artisan comm
 php artisan pennant:feature WalletFunding
 ```
 
-When writing a feature class, you only need to use the `Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolve` trait, which will be invoked to resolve the feature's initial value for a given scope.
+When writing a feature class, you only need to use the `Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolve`
+trait, which will be invoked to resolve the feature's initial value for a given scope.
 
+```php
+<?php
+
+namespace App\Features;
+
+use Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolve;
+
+class WalletFunding
+{
+    use WithFeatureResolve;
+}
+```
+
+### Events For Feature Activation And Deactivation
+
+When a feature is activated or deactivate, this package dispatches events which your application can subscribe to. You
+can listen to this events inside your EventServiceProvider class.
+
+```php
+
+use Stephenjude\FeaturePlugin\Events\FeatureActivatedForAll;use Stephenjude\FeaturePlugin\Events\FeatureDeactivatedForAll;use Stephenjude\FeaturePlugin\Events\FeatureSegmentCreated;use Stephenjude\FeaturePlugin\Events\FeatureSegmentModified;use Stephenjude\FeaturePlugin\Events\FeatureSegmentRemoved;use Stephenjude\FeaturePlugin\Events\RemovingFeatureSegment;
+
+protected $listen = [
+    FeatureActivatedForAll::class => [
+        // Dispatched after feature is activated for all users.
+    ],
+    FeatureDeactivatedForAll::class => [
+        // Dispatched after feature is deactivated for all users.
+    ],
+    FeatureSegmentCreated::class => [
+        // Dispatched after feature segment is created.
+    ],
+    FeatureSegmentModified::class => [
+        // Dispatched after feature segment is modified.
+    ],
+    RemovingFeatureSegment::class => [
+        // Dispatched before feature segment is removed.
+    ],
+    FeatureSegmentRemoved::class => [
+        // Dispatched after feature segment is removed.
+    ],
+];
+```
 
 You can publish the config file with:
 

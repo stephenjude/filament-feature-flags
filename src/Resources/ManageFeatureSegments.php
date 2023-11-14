@@ -9,8 +9,8 @@ use Filament\Resources\Pages\ManageRecords;
 use Laravel\Pennant\Feature;
 use Laravel\Pennant\FeatureManager;
 use Stephenjude\Events\FeatureActivatedForAll;
-use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;
-use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;
+use Stephenjude\FeaturePlugin\Events\FeatureDeactivatedForAll;
+use Stephenjude\FeaturePlugin\Events\FeatureSegmentCreated;
 use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class ManageFeatureSegments extends ManageRecords

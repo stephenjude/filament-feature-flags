@@ -1,6 +1,6 @@
 <?php
 
-namespace Stephenjude\FilamentFeatureFlag\Events;
+namespace Stephenjude\FeaturePlugin\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Events\ShouldDispatchAfterCommit;
