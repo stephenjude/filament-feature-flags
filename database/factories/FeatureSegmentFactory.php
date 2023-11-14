@@ -13,7 +13,7 @@ class FeatureSegmentFactory extends Factory
         return [
             'feature' => 'App\\Features\\Wallet',
             'scope' => 'currencies',
-            'values' => ['NGN', 'GHS', 'USD',],
+            'values' => ['NGN', 'GHS', 'USD'],
             'active' => true,
         ];
     }

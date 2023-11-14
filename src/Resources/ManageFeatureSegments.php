@@ -24,12 +24,12 @@ class ManageFeatureSegments extends ManageRecords
                 ->modalWidth('md')
                 ->modalHeading('Create Feature Segment')
                 ->label('Segment Feature')
-                ->after(fn(FeatureSegment $record) => $this->afterCreate($record)),
+                ->after(fn (FeatureSegment $record) => $this->afterCreate($record)),
 
             Actions\Action::make('activate_for_all')
                 ->label('Activate For All')
                 ->modalWidth('md')
-                ->modalDescription(fn($record) => 'This action will activate the selected feature for all users.')
+                ->modalDescription(fn ($record) => 'This action will activate the selected feature for all users.')
                 ->form([
                     Select::make('feature')
                         ->required()
@@ -37,12 +37,12 @@ class ManageFeatureSegments extends ManageRecords
                         ->columnSpanFull(),
                 ])
                 ->modalSubmitActionLabel('Activate')
-                ->action(fn($data) => $this->activateForAll($data['feature'])),
+                ->action(fn ($data) => $this->activateForAll($data['feature'])),
 
             Actions\Action::make('deactivate_for_all')
                 ->modalWidth('md')
                 ->label('Deactivate For All')
-                ->modalDescription(fn($record) => 'This action will deactivate this feature for all users.')
+                ->modalDescription(fn ($record) => 'This action will deactivate this feature for all users.')
                 ->form([
                     Select::make('feature')
                         ->required()
@@ -51,7 +51,7 @@ class ManageFeatureSegments extends ManageRecords
                 ])
                 ->modalSubmitActionLabel('Deactivate')
                 ->color('danger')
-                ->action(fn($data) => $this->deactivateForAll($data['feature'])),
+                ->action(fn ($data) => $this->deactivateForAll($data['feature'])),
         ];
     }
 

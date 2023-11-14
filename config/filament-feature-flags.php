@@ -32,14 +32,14 @@ return [
                 'key' => 'email',
             ],
         ],
-//        [
-//            'column' => 'currency',
-//            'source' => [
-//                'model' => Squire\Models\Currency::class, // composer require squirephp/currencies-en
-//                'value' => 'code_alphabetic',
-//                'key' => 'code_alphabetic',
-//            ],
-//        ],
+        //        [
+        //            'column' => 'currency',
+        //            'source' => [
+        //                'model' => Squire\Models\Currency::class, // composer require squirephp/currencies-en
+        //                'value' => 'code_alphabetic',
+        //                'key' => 'code_alphabetic',
+        //            ],
+        //        ],
     ],
 
     'panel' => [
@@ -61,6 +61,6 @@ return [
         /*
          * Navigation item icon for admin panel resource.
          */
-        'icon' => 'heroicon-o-cursor-arrow-ripple'
-    ]
+        'icon' => 'heroicon-o-cursor-arrow-ripple',
+    ],
 ];

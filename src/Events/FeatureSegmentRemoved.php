@@ -6,7 +6,6 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Events\ShouldDispatchAfterCommit;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Stephenjude\FeaturePlugin\Models\FeatureSegment;
 
 class FeatureSegmentRemoved implements ShouldDispatchAfterCommit
 {
