@@ -28,17 +28,18 @@
         "orchestra/testbench": "^8.8",
         "pestphp/pest": "^2.20",
         "pestphp/pest-plugin-arch": "^2.0",
-        "pestphp/pest-plugin-laravel": "^2.0"
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-livewire": "^2.1"
     },
     "autoload": {
         "psr-4": {
-            "Stephenjude\\FeaturePlugin\\": "src/",
-            "Stephenjude\\FeaturePlugin\\Database\\Factories\\": "database/factories/"
+            "Stephenjude\\FilamentFeatureFlag\\": "src/",
+            "Stephenjude\\FilamentFeatureFlag\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Stephenjude\\FeaturePlugin\\Tests\\": "tests/",
+            "Stephenjude\\FilamentFeatureFlag\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -70,7 +71,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Stephenjude\\FeaturePlugin\\FeatureFlagPluginServiceProvider"
+                "Stephenjude\\FilamentFeatureFlag\\FeatureFlagPluginServiceProvider"
             ]
         }
     },

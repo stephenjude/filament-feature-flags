@@ -1,10 +1,10 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin;
+namespace Stephenjude\FilamentFeatureFlag;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Stephenjude\FeaturePlugin\Commands\FeaturePluginCommand;
+use Stephenjude\FilamentFeatureFlag\Commands\FeaturePluginCommand;
 
 class FeatureFlagPluginServiceProvider extends PackageServiceProvider
 {

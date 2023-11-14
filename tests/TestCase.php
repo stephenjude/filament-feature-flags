@@ -1,10 +1,10 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Tests;
+namespace Stephenjude\FilamentFeatureFlag\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Stephenjude\FeaturePlugin\FeatureFlagPluginServiceProvider;
+use Stephenjude\FilamentFeatureFlag\FeatureFlagPluginServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Stephenjude\\FeaturePlugin\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Stephenjude\\FilamentFeatureFlag\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

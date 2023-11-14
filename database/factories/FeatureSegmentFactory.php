@@ -1,6 +1,6 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Database\Factories;
+namespace Stephenjude\FilamentFeatureFlag\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 

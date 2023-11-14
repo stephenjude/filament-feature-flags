@@ -1,11 +1,11 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Events;
+namespace Stephenjude\FilamentFeatureFlag\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Stephenjude\FeaturePlugin\Models\FeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class RemovingFeatureSegment
 {

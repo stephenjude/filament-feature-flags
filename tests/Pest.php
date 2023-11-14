@@ -1,5 +1,5 @@
 <?php
 
-use Stephenjude\FeaturePlugin\Tests\TestCase;
+use Stephenjude\FilamentFeatureFlag\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

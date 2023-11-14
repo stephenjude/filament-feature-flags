@@ -1,6 +1,6 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Models;
+namespace Stephenjude\FilamentFeatureFlag\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

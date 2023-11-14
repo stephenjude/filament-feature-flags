@@ -1,9 +1,9 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Traits;
+namespace Stephenjude\FilamentFeatureFlag\Traits;
 
 use Laravel\Pennant\Feature;
-use Stephenjude\FeaturePlugin\Models\FeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 trait WithFeatureResolve
 {

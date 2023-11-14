@@ -1,6 +1,6 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Resources;
+namespace Stephenjude\FilamentFeatureFlag\Resources;
 
 use Filament\Actions;
 use Filament\Forms\Components\Select;
@@ -9,9 +9,9 @@ use Filament\Resources\Pages\ManageRecords;
 use Laravel\Pennant\Feature;
 use Laravel\Pennant\FeatureManager;
 use Stephenjude\Events\FeatureActivatedForAll;
-use Stephenjude\FeaturePlugin\Events\FeatureDeactivatedForAll;
-use Stephenjude\FeaturePlugin\Events\FeatureSegmentCreated;
-use Stephenjude\FeaturePlugin\Models\FeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;
+use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;
+use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class ManageFeatureSegments extends ManageRecords
 {

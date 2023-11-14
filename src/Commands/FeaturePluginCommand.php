@@ -1,6 +1,6 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin\Commands;
+namespace Stephenjude\FilamentFeatureFlag\Commands;
 
 use Illuminate\Console\Command;
 

@@ -1,23 +1,24 @@
 <?php
 
-namespace Stephenjude\FeaturePlugin;
+namespace Stephenjude\FilamentFeatureFlag;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Stephenjude\FeaturePlugin\Resources\FeatureSegmentResource;
+use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
 
 class FeatureFlagPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'feature-flag';
+        return 'filament-feature-flag';
     }
 
     public function register(Panel $panel): void
     {
-        $panel->resources([
-            FeatureSegmentResource::class,
-        ]);
+        $panel
+            ->resources([
+                FeatureSegmentResource::class,
+            ]);
     }
 
     public function boot(Panel $panel): void
