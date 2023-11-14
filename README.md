@@ -1,6 +1,6 @@
 # Filament Feature Flags
 
-Simple feature flags and segments with Filament Admin Panel and Laravel Pennant.
+Filament implementation of feature management and segmentation with Laravel Pennant.
 
 - Apply features for a **segment** of users. Example by country or currency.
 - Apply features for **individual** users. Example by email or ID.
@@ -161,6 +161,8 @@ return [
     ]
 ];
 ```
+
+## Screenshots:
 
 ## Testing
 
