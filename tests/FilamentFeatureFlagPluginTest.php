@@ -7,7 +7,6 @@ use Stephenjude\FilamentFeatureFlag\Resources\ManageFeatureSegments;
 use function Pest\Laravel\{get};
 use function Pest\Livewire\livewire;
 
-
 it('can render page', function () {
     get(FeatureSegmentResource::getUrl())->assertOk();
 });
