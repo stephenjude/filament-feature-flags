@@ -98,7 +98,7 @@ To add a new segment, add this code snippet below to the **segments** section on
 ```
 ![](./art/country.png)
 
-## Events For Feature Activation And Deactivation
+## Feature Events
 
 When a feature is activated or deactivate, this package dispatches events which your application can subscribe to. You
 can listen to these events inside your EventServiceProvider class.
