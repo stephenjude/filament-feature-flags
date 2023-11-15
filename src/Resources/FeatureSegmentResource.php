@@ -11,9 +11,9 @@ use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Validation\Rules\Unique;
-use Stephenjude\FeaturePlugin\Events\FeatureSegmentModified;
-use Stephenjude\FeaturePlugin\Events\FeatureSegmentRemoved;
-use Stephenjude\FeaturePlugin\Events\RemovingFeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentModified;
+use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentRemoved;
+use Stephenjude\FilamentFeatureFlag\Events\RemovingFeatureSegment;
 use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class FeatureSegmentResource extends Resource

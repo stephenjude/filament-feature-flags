@@ -1,6 +1,5 @@
 <?php
 
-// config for Stephenjude/FeaturePlugin
 return [
     // This package supports only class based features.
 

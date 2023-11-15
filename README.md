@@ -1,17 +1,15 @@
 # Filament Feature Flags
 
-Filament implementation of feature management and segmentation with Laravel Pennant.
-
-- Apply features for a **segment** of users. Example by country or currency.
-- Apply features for **individual** users. Example by email or ID.
-- Apply features for **all** users.
-
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/stephenjude/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/stephenjude/filament-feature-flags)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/stephenjude/filament-feature-flags/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/stephenjude/filament-feature-flags/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stephenjude/filament-feature-flags/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stephenjude/filament-feature-flags/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/stephenjude/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/stephenjude/filament-feature-flags)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Filament implementation of feature management and segmentation with Laravel Pennant.
+
+- Apply features for a **segment** of users. Example by country or currency.
+- Apply features for **individual** users. Example by email or ID.
+- Apply features for **all** users.
 
 ## Installation
 
@@ -22,7 +20,7 @@ composer require stephenjude/filament-feature-flags
 
 php artisan vendor:publish --provider="Laravel\Pennant\PennantServiceProvider"
 
-php artisan vendor:publish --tag="filament-feature-flags-migrations"
+php artisan vendor:publish --provider="Stephenjude\FilamentFeatureFlag\FeatureFlagPluginServiceProvider"
 
 php artisan migrate
 ```
@@ -72,7 +70,7 @@ can listen to this events inside your EventServiceProvider class.
 
 ```php
 
-use Stephenjude\FeaturePlugin\Events\FeatureActivatedForAll;use Stephenjude\FeaturePlugin\Events\FeatureDeactivatedForAll;use Stephenjude\FeaturePlugin\Events\FeatureSegmentCreated;use Stephenjude\FeaturePlugin\Events\FeatureSegmentModified;use Stephenjude\FeaturePlugin\Events\FeatureSegmentRemoved;use Stephenjude\FeaturePlugin\Events\RemovingFeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Events\FeatureActivatedForAll;use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentModified;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentRemoved;use Stephenjude\FilamentFeatureFlag\Events\RemovingFeatureSegment;
 
 protected $listen = [
     FeatureActivatedForAll::class => [
