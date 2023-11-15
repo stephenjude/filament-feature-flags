@@ -105,7 +105,7 @@ can listen to these events inside your EventServiceProvider class.
 
 ```php
 
-use Stephenjude\FilamentFeatureFlag\Events\FeatureActivatedForAll;use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentModified;use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentRemoved;use Stephenjude\FilamentFeatureFlag\Events\RemovingFeatureSegment;
+use Stephenjude\FilamentFeatureFlag\Events\{FeatureActivatedForAll,FeatureDeactivatedForAll,FeatureSegmentCreated,FeatureSegmentModified,FeatureSegmentRemoved,RemovingFeatureSegment};
 
 protected $listen = [
     FeatureActivatedForAll::class => [
