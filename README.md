@@ -65,7 +65,7 @@ class WalletFunding
 }
 ```
 
-## Extending Feature Segments 
+## Feature Segmentation 
 By default, this package resolves scope using the `App\Models\User` model and the default segment applies features for individual or group of users by email.
 
 ![](./art/email.png)
