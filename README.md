@@ -49,7 +49,7 @@ To create a class based feature, you may invoke the pennant:feature Artisan comm
 php artisan pennant:feature WalletFunding
 ```
 
-When writing a feature class, you only need to use the `Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolve`
+When writing a feature class, you only need to use the `Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolver`
 trait, which will be invoked to resolve the feature's initial value for a given scope.
 
 ```php
@@ -101,7 +101,7 @@ To add a new segment, add this code snippet below to the **segments** section on
 ## Events For Feature Activation And Deactivation
 
 When a feature is activated or deactivate, this package dispatches events which your application can subscribe to. You
-can listen to this events inside your EventServiceProvider class.
+can listen to these events inside your EventServiceProvider class.
 
 ```php
 
@@ -127,12 +127,6 @@ protected $listen = [
         // Dispatched after feature segment is removed.
     ],
 ];
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-feature-flags-config"
 ```
 
 This is the contents of the published config file:
