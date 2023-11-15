@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/stephenjude/filament-feature-flags/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/stephenjude/filament-feature-flags/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/stephenjude/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/stephenjude/filament-feature-flags)
 
-Filament implementation of feature management and segmentation with Laravel Pennant.
+Filament implementation of feature flags and segmentation with Laravel Pennant.
 
 - Apply features for a **segment** of users. Example by country or currency.
 - Apply features for **individual** users. Example by email or ID.

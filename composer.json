@@ -1,6 +1,6 @@
 {
     "name": "stephenjude/filament-feature-flags",
-    "description": "Filament implementation of feature management and segmentation with Laravel Pennant.",
+    "description": "Filament implementation of feature flags and segmentation with Laravel Pennant.",
     "keywords": [
         "stephenjude",
         "laravel",
