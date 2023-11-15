@@ -60,6 +60,7 @@ class FeatureSegmentResource extends Resource
                 ...static::createValuesFields(),
 
                 Select::make('active')
+                    ->label('Status')
                     ->options([true => 'Activate', false => 'Deactivate'])
                     ->unique(modifyRuleUsing: fn (Unique $rule, Get $get) => $rule
                         ->where('feature', $get('feature'))
