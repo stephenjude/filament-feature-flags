@@ -1,8 +1,8 @@
 <?php
 
+use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
 use Stephenjude\FilamentFeatureFlag\Resources\ManageFeatureSegments;
-use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 use function Pest\Laravel\{get};
 use function Pest\Livewire\livewire;
