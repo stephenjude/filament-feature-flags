@@ -2,6 +2,7 @@
 
 namespace Stephenjude\FilamentFeatureFlag\Resources;
 
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -51,7 +52,7 @@ class FeatureSegmentResource extends Resource
 
                 Select::make('scope')
                     ->live()
-                    ->afterStateUpdated(fn (Set $set) => $set('values', null))
+                    ->afterStateUpdated(fn(Set $set) => $set('values', null))
                     ->required()
                     ->columnSpanFull()
                     ->options(FeatureSegment::segmentOptionsList()),
@@ -60,7 +61,7 @@ class FeatureSegmentResource extends Resource
 
                 Select::make('active')
                     ->options([true => 'Activate', false => 'Deactivate'])
-                    ->unique(modifyRuleUsing: fn (Unique $rule, Get $get) => $rule
+                    ->unique(modifyRuleUsing: fn(Unique $rule, Get $get) => $rule
                         ->where('feature', $get('feature'))
                         ->where('scope', $get('scope'))
                     )
@@ -85,7 +86,7 @@ class FeatureSegmentResource extends Resource
                     ->badge(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'ACTIVATED' => 'success',
                         'DEACTIVATED' => 'danger',
                     })
@@ -105,14 +106,24 @@ class FeatureSegmentResource extends Resource
                 Tables\Actions\EditAction::make()
                     ->label('Modify')
                     ->modalHeading('Modify Feature Segment')
-                    ->after(fn (FeatureSegment $segment) => FeatureSegmentModified::dispatch($segment)),
+                    ->after(
+                        fn(FeatureSegment $record) => FeatureSegmentModified::dispatch(
+                            $record,
+                            Filament::auth()->user()
+                        )
+                    ),
 
                 Tables\Actions\DeleteAction::make()
                     ->modalHeading('Removing this feature segment cannot be undone!')
-                    ->modalDescription(fn (FeatureSegment $record) => $record->description)
+                    ->modalDescription(fn(FeatureSegment $record) => $record->description)
                     ->label('Remove')
-                    ->before(fn (FeatureSegment $segment) => RemovingFeatureSegment::dispatch($segment))
-                    ->after(fn (FeatureSegment $segment) => FeatureSegmentRemoved::dispatch($segment)),
+                    ->before(
+                        fn(FeatureSegment $record) => RemovingFeatureSegment::dispatch(
+                            $record,
+                            Filament::auth()->user()
+                        )
+                    )
+                    ->after(fn() => FeatureSegmentRemoved::dispatch(Filament::auth()->user())),
             ]);
     }
 
@@ -135,13 +146,13 @@ class FeatureSegmentResource extends Resource
 
                     return Select::make('values')
                         ->label(str($column)->plural()->title())
-                        ->hidden(fn (Get $get) => $get('scope') !== $column)
+                        ->hidden(fn(Get $get) => $get('scope') !== $column)
                         ->required()
                         ->multiple()
                         ->searchable()
                         ->columnSpanFull()
                         ->getSearchResultsUsing(
-                            fn (string $search): array => $model::where($value, 'like', "%{$search}%")
+                            fn(string $search): array => $model::where($value, 'like', "%{$search}%")
                                 ->limit(50)->pluck($value, $key)->toArray()
                         );
                 }
