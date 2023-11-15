@@ -11,7 +11,7 @@ Filament implementation of feature flags and segmentation with Laravel Pennant.
 - Apply features for **individual** users. Example by email or ID.
 - Apply features for **all** users.
 
-
+![](./art/segments.png)
 
 ## Installation
 
@@ -68,6 +68,8 @@ class WalletFunding
 ## Extending Feature Segments 
 By default, this package resolves scope using the `App\Models\User` model and the default segment applies features for individual or group of users by email.
 
+![](./art/email.png)
+
 To add a new segment, add this code snippet below to the **segments** section on the `filament-feature-flag` config:
 
 ### Example 1: Adding Segment For Currency
@@ -81,7 +83,7 @@ To add a new segment, add this code snippet below to the **segments** section on
     ],
 ],
 ```
-
+![](./art/currency.png)
 
 ### Example 2: Adding Segment For Country
 ```php
@@ -94,6 +96,7 @@ To add a new segment, add this code snippet below to the **segments** section on
     ],
 ],
 ```
+![](./art/country.png)
 
 ## Events For Feature Activation And Deactivation
 
@@ -193,6 +196,10 @@ return [
 ```
 
 ## Screenshots:
+
+![](./art/activate.png)
+
+![](./art/deactivate.png)
 
 ## Testing
 
