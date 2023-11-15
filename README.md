@@ -11,6 +11,8 @@ Filament implementation of feature flags and segmentation with Laravel Pennant.
 - Apply features for **individual** users. Example by email or ID.
 - Apply features for **all** users.
 
+
+
 ## Installation
 
 You can install the package via composer and publish and run the migrations with:
@@ -39,7 +41,7 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-### Create Class Based Feature
+## Create Class Based Feature
 
 To create a class based feature, you may invoke the pennant:feature Artisan command.
 
@@ -63,7 +65,37 @@ class WalletFunding
 }
 ```
 
-### Events For Feature Activation And Deactivation
+## Extending Feature Segments 
+By default, this package resolves scope using the `App\Models\User` model and the default segment applies features for individual or group of users by email.
+
+To add a new segment, add this code snippet below to the **segments** section on the `filament-feature-flag` config:
+
+### Example 1: Adding Segment For Currency
+```php
+[
+    'column' => 'currency',
+    'source' => [
+        'model' => \App\Models\Currency::class,
+        'value' => 'code',
+        'key' => 'code',
+    ],
+],
+```
+
+
+### Example 2: Adding Segment For Country
+```php
+[
+    'column' => 'country',
+    'source' => [
+        'model' => \App\Models\Country::class,
+        'value' => 'name',
+        'key' => 'name',
+    ],
+],
+```
+
+## Events For Feature Activation And Deactivation
 
 When a feature is activated or deactivate, this package dispatches events which your application can subscribe to. You
 can listen to this events inside your EventServiceProvider class.
