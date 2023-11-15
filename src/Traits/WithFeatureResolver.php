@@ -5,7 +5,7 @@ namespace Stephenjude\FilamentFeatureFlag\Traits;
 use Laravel\Pennant\Feature;
 use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
-trait WithFeatureResolve
+trait WithFeatureResolver
 {
     /**
      * Resolve the feature's initial value.

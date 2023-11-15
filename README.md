@@ -57,11 +57,11 @@ trait, which will be invoked to resolve the feature's initial value for a given 
 
 namespace App\Features;
 
-use Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolve;
+use Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolver;
 
 class WalletFunding
 {
-    use WithFeatureResolve;
+    use WithFeatureResolver;
 }
 ```
 
