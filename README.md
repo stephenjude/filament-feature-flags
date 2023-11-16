@@ -195,6 +195,8 @@ return [
 
 ![](./art/deactivate.png)
 
+![](./art/purge.png)
+
 ## Testing
 
 ```bash
