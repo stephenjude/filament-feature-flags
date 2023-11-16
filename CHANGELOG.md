@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 1.0.3 - 2023-11-16
+
+- Fixed feature resolver logic.
+
 ## 1.0.2 - 2023-11-16
 
 - Fixed error for deleted feature on existing feature segments.
