@@ -11,7 +11,7 @@ class FeatureSegmentRemoved implements ShouldDispatchAfterCommit
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(mixed $authUser)
+    public function __construct( public mixed $authUser)
     {
     }
 }
