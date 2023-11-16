@@ -14,17 +14,17 @@ trait WithFeatureResolver
     {
         $defaultState = config('filament-feature-flags.default');
 
-        if (! is_a($scope, config('filament-feature-flags.scope'))) {
+        if (!is_a($scope, config('filament-feature-flags.scope'))) {
             return $defaultState;
         }
 
         $segments = FeatureSegment::where('feature', get_class($this))->cursor();
 
-        if ($segments->count()) {
+        if ($segments->count() === false) {
             return $defaultState;
         }
 
-        return $segments->contains(fn (FeatureSegment $segment) => $segment->resolve($scope));
+        return $segments->contains(fn(FeatureSegment $segment) => $segment->resolve($scope));
     }
 
     public static function title(): string
