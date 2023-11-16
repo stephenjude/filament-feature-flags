@@ -28,9 +28,9 @@ class ManageFeatureSegments extends ManageRecords
                 ->after(fn(FeatureSegment $record) => $this->afterCreate($record)),
 
             Actions\Action::make('activate_for_all')
-                ->label('Activate For All')
+                ->label('Activate')
                 ->modalWidth('md')
-                ->modalDescription(fn($record) => 'This action will activate the selected feature for all users.')
+                ->modalDescription(fn($record) => 'This action will activate the selected feature for users.')
                 ->form([
                     Select::make('feature')
                         ->required()
@@ -42,8 +42,8 @@ class ManageFeatureSegments extends ManageRecords
 
             Actions\Action::make('deactivate_for_all')
                 ->modalWidth('md')
-                ->label('Deactivate For All')
-                ->modalDescription(fn($record) => 'This action will deactivate this feature for all users.')
+                ->label('Deactivate')
+                ->modalDescription(fn($record) => 'This action will deactivate this feature for users.')
                 ->form([
                     Select::make('feature')
                         ->required()
@@ -76,7 +76,7 @@ class ManageFeatureSegments extends ManageRecords
 
         Feature::activateForEveryone($feature);
 
-        Notification::make()->success()->title('Done!')->body("{$feature::title()} activated for all users.")->send();
+        Notification::make()->success()->title('Done!')->body("{$feature::title()} activated for users.")->send();
 
         FeatureActivatedForAll::dispatch($feature, Filament::auth()->user());
     }
@@ -87,7 +87,7 @@ class ManageFeatureSegments extends ManageRecords
 
         Feature::deactivateForEveryone($feature);
 
-        Notification::make()->success()->title('Done!')->body("{$feature::title()} deactivated for all users.")->send();
+        Notification::make()->success()->title('Done!')->body("{$feature::title()} deactivated for users.")->send();
 
         FeatureDeactivatedForAll::dispatch($feature, Filament::auth()->user());
     }
