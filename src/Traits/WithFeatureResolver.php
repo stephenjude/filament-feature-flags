@@ -27,7 +27,7 @@ trait WithFeatureResolver
 
     public static function title(): string
     {
-        return str(class_basename(self::class))->snake()->replace('_', ' ')->title()->toString();
+        return str(class_basename(self::class))->headline()->toString();
     }
 
     public static function description(): string
