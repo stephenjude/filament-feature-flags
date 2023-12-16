@@ -35,7 +35,11 @@ class FeatureSegment extends Model
 
     public function title(): Attribute
     {
-        return Attribute::get(fn () => class_exists($this->feature) ? $this->feature::title() : '(Feature Deleted)');
+        return Attribute::get(
+            fn () => class_exists($this->feature)
+                ? $this->feature::title()
+                : str($this->feature)->headline()
+        );
     }
 
     public function description(): Attribute
@@ -54,7 +58,7 @@ class FeatureSegment extends Model
         return collect(Feature::all())
             ->map(fn ($value, $key) => [
                 'id' => $key,
-                'name' => $name = str(class_basename($key))->snake()->replace('_', ' ')->title()->toString(),
+                'name' => $name = str(class_basename($key))->headline()->toString(),
                 'state' => $value,
                 'description' => "This feature covers $name on the mobile app.",
             ])
