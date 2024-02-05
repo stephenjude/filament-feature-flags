@@ -100,7 +100,7 @@ class ManageFeatureSegments extends ManageRecords
     {
         app(FeatureManager::class)->store()->purge($feature);
 
-        $featureTitle = is_null($feature) ? __('All features') : $feature::title() . __(' feature');
+        $featureTitle = is_null($feature) ? __('All features') : $feature::title().__(' feature');
 
         Notification::make()->success()->title(__('Done!'))
             ->body(__("$featureTitle successfully purged from storage."))

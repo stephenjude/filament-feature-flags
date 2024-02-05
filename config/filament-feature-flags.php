@@ -65,5 +65,5 @@ return [
 
     'resources' => [
         Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource::class,
-    ]
+    ],
 ];

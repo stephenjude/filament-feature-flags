@@ -4,7 +4,6 @@ namespace Stephenjude\FilamentFeatureFlag;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
 
 class FeatureFlagPlugin implements Plugin
 {
