@@ -23,17 +23,17 @@ class FeatureSegmentResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return config('filament-feature-flags.panel.group');
+        return __(config('filament-feature-flags.panel.group'));
     }
 
     public static function getNavigationLabel(): string
     {
-        return config('filament-feature-flags.panel.label');
+        return __(config('filament-feature-flags.panel.label'));
     }
 
     public static function getModelLabel(): string
     {
-        return config('filament-feature-flags.panel.title');
+        return __(config('filament-feature-flags.panel.title'));
     }
 
     public static function getNavigationIcon(): ?string
@@ -46,11 +46,13 @@ class FeatureSegmentResource extends Resource
         return $form
             ->schema([
                 Select::make('feature')
+                    ->label(__('Feature'))
                     ->required()
                     ->options(FeatureSegment::featureOptionsList())
                     ->columnSpanFull(),
 
                 Select::make('scope')
+                    ->label(__('Scope'))
                     ->live()
                     ->afterStateUpdated(fn (Set $set) => $set('values', null))
                     ->required()
@@ -60,14 +62,14 @@ class FeatureSegmentResource extends Resource
                 ...static::createValuesFields(),
 
                 Select::make('active')
-                    ->label('Status')
-                    ->options([true => 'Activate', false => 'Deactivate'])
+                    ->label(__('Status'))
+                    ->options([true => __('Activate'), false => __('Deactivate')])
                     ->unique(modifyRuleUsing: fn (Unique $rule, Get $get) => $rule
                         ->where('feature', $get('feature'))
                         ->where('scope', $get('scope'))
                     )
                     ->validationMessages([
-                        'unique' => 'Please note that each feature can have only one activated or deactivated segment at a time.',
+                        'unique' => __('Please note that each feature can have only one activated or deactivated segment at a time.'),
                     ])
                     ->required()
                     ->columnSpanFull(),
@@ -79,43 +81,46 @@ class FeatureSegmentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('Title'))
                     ->sortable(['feature'])
                     ->searchable(['feature']),
                 Tables\Columns\TextColumn::make('values')
-                    ->label('Segment')
+                    ->label(__('Segment'))
                     ->wrap()
                     ->badge(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'ACTIVATED' => 'success',
-                        'DEACTIVATED' => 'danger',
+                        __('ACTIVATED') => 'success',
+                        __('DEACTIVATED') => 'danger',
                     })
                     ->weight(FontWeight::ExtraBold)
                     ->getStateUsing(function (FeatureSegment $record) {
-                        return $record->active ? 'ACTIVATED' : 'DEACTIVATED';
+                        return $record->active ? __('ACTIVATED') : __('DEACTIVATED');
                     }),
             ])
             ->defaultSort('feature')
             ->filters([
                 Tables\Filters\SelectFilter::make('feature')
+                    ->label(__('Feature'))
                     ->options(FeatureSegment::featureOptionsList()),
                 Tables\Filters\SelectFilter::make('scope')
+                    ->label(__('Sope'))
                     ->options(FeatureSegment::segmentOptionsList()),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->label('Modify')
-                    ->modalHeading('Modify Feature Segment')
+                    ->label(__('Modify'))
+                    ->modalHeading(__('Modify Feature Segment'))
                     ->after(fn (FeatureSegment $record) => FeatureSegmentModified::dispatch(
                         $record,
                         Filament::auth()->user()
                     )),
 
                 Tables\Actions\DeleteAction::make()
-                    ->modalHeading('Removing this feature segment cannot be undone!')
+                    ->modalHeading(__('Removing this feature segment cannot be undone!'))
                     ->modalDescription(fn (FeatureSegment $record) => $record->description)
-                    ->label('Remove')
+                    ->label(__('Remove'))
                     ->before(fn (FeatureSegment $record) => RemovingFeatureSegment::dispatch(
                         $record,
                         Filament::auth()->user()
