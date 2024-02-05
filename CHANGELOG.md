@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 1.0.7 - 2024-02-05
+
+- Translations and Resource via config by @eelco2k
+
 ## 1.0.6 - 2023-12-16
 
 - Improved support for non-class based features  by @eyounelson
