@@ -67,11 +67,10 @@ class FeatureSegmentResource extends Resource
                         modifyRuleUsing: fn(Unique $rule, Get $get) => $rule
                             ->where('feature', $get('feature'))
                             ->where('scope', $get('scope'))
-                            ->where('values', $get('values'))
                             ->where('active', $get('active'))
                     )
                     ->validationMessages([
-                        'unique' => 'Feature segmentation already exists! Please note that each feature can only have an activated and a deactivated segment. Modify existing segment or remove it and create a new segment.',
+                        'unique' => 'Feature segmentation already exists! Please note that each feature scope can only have an activated and a deactivated segment. Modify existing segment or remove it and create a new segment.',
                     ])
                     ->required()
                     ->columnSpanFull(),

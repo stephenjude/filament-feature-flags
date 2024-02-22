@@ -24,16 +24,27 @@ class FeatureSegment extends Model
 
     public function resolve(mixed $scope): bool
     {
-        $inScope = in_array($scope->{$this->scope}, $this->values, true);
+        $meetsSegmentCriteria = in_array($scope->{$this->scope}, $this->values, true);
 
-        if (($this->active && $inScope) || (!$this->active && !$inScope)){
+        /*
+         * This check is TRUE if the segment is activated and the scope meets the criteria. Additionally,
+         * it returns TRUE if the segment is deactivated and doesn't meet the criteria.
+         */
+        if (($this->active && $meetsSegmentCriteria) || (!$this->active && !$meetsSegmentCriteria)) {
             return true;
         }
 
-        if (($this->active && !$inScope) || (!$this->active && $inScope)){
+        /*
+         * This check is FALSE if the segment is activated and the scope doesn't meet the criteria.
+         * Additionally, it returns FALSE if the segment is deactivated and meet's the criteria.
+         */
+        if (($this->active && !$meetsSegmentCriteria) || (!$this->active && $meetsSegmentCriteria)) {
             return false;
         }
 
+        /*
+         * Return FALSE by default.
+         */
         return false;
     }
 

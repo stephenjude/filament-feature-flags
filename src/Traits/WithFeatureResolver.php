@@ -16,11 +16,20 @@ trait WithFeatureResolver
             return config('filament-feature-flags.default');
         }
 
+        /*
+         * This resolution loop iterates through all segmentations associated with this feature
+         * and ensures that all resolved segments are true. If any resolved segment returns
+         * false, this feature resolution will be false.
+         */
         return FeatureSegment::where('feature', get_class($this))
             ->get()
-            ->whenEmpty(fn() => config('filament-feature-flags.default'))
-            ->whenNotEmpty(fn($segments) => $segments->map(fn(FeatureSegment $segment) => $segment->resolve($scope))
-                ->doesntContain(false));
+            ->whenEmpty(
+                fn() => config('filament-feature-flags.default'),
+                fn($segments) => $segments->map(fn(FeatureSegment $segment) => $segment->resolve($scope))
+                    ->doesntContain(
+                        false
+                    ) // Makes sure that multiple segmentations are all true, if not resolve as false.
+            );
     }
 
     public static function title(): string
