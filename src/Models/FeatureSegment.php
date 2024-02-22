@@ -30,7 +30,7 @@ class FeatureSegment extends Model
          * This check is TRUE if the segment is activated and the scope meets the criteria. Additionally,
          * it returns TRUE if the segment is deactivated and doesn't meet the criteria.
          */
-        if (($this->active && $meetsSegmentCriteria) || (!$this->active && !$meetsSegmentCriteria)) {
+        if (($this->active && $meetsSegmentCriteria) || (! $this->active && ! $meetsSegmentCriteria)) {
             return true;
         }
 
@@ -38,7 +38,7 @@ class FeatureSegment extends Model
          * This check is FALSE if the segment is activated and the scope doesn't meet the criteria.
          * Additionally, it returns FALSE if the segment is deactivated and meet's the criteria.
          */
-        if (($this->active && !$meetsSegmentCriteria) || (!$this->active && $meetsSegmentCriteria)) {
+        if (($this->active && ! $meetsSegmentCriteria) || (! $this->active && $meetsSegmentCriteria)) {
             return false;
         }
 
@@ -50,12 +50,12 @@ class FeatureSegment extends Model
 
     public function title(): Attribute
     {
-        return Attribute::get(fn() => class_exists($this->feature) ? $this->feature::title() : '(Feature Deleted)');
+        return Attribute::get(fn () => class_exists($this->feature) ? $this->feature::title() : '(Feature Deleted)');
     }
 
     public function description(): Attribute
     {
-        return Attribute::get(fn() => sprintf(
+        return Attribute::get(fn () => sprintf(
             '%s %s for customers who have any of these %s — %s.',
             $this->title,
             $this->active ? 'activated' : 'deactivated',
@@ -67,7 +67,7 @@ class FeatureSegment extends Model
     public static function allFeatures(): array
     {
         return collect(Feature::all())
-            ->map(fn($value, $key) => [
+            ->map(fn ($value, $key) => [
                 'id' => $key,
                 'name' => $name = str(class_basename($key))->snake()->replace('_', ' ')->title()->toString(),
                 'state' => $value,
@@ -86,7 +86,7 @@ class FeatureSegment extends Model
     {
         return collect(config('filament-feature-flags.segments'))
             ->pluck('column')
-            ->mapWithKeys(fn($segment) => [$segment => str($segment)->plural()->title()->toString()])
+            ->mapWithKeys(fn ($segment) => [$segment => str($segment)->plural()->title()->toString()])
             ->toArray();
     }
 }

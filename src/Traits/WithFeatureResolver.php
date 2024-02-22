@@ -12,7 +12,7 @@ trait WithFeatureResolver
      */
     public function resolve(mixed $scope): bool
     {
-        if (!is_a($scope, config('filament-feature-flags.scope'))) {
+        if (! is_a($scope, config('filament-feature-flags.scope'))) {
             return config('filament-feature-flags.default');
         }
 
@@ -24,8 +24,8 @@ trait WithFeatureResolver
         return FeatureSegment::where('feature', get_class($this))
             ->get()
             ->whenEmpty(
-                fn() => config('filament-feature-flags.default'),
-                fn($segments) => $segments->map(fn(FeatureSegment $segment) => $segment->resolve($scope))
+                fn () => config('filament-feature-flags.default'),
+                fn ($segments) => $segments->map(fn (FeatureSegment $segment) => $segment->resolve($scope))
                     ->doesntContain(
                         false
                     ) // Makes sure that multiple segmentations are all true, if not resolve as false.
