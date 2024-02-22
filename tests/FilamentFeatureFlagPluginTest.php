@@ -17,3 +17,12 @@ it('can list feature segments', function () {
     livewire(ManageFeatureSegments::class)
         ->assertCanSeeTableRecords($segments);
 });
+
+it('can feature segment using email scope', function () {
+    $segments = FeatureSegment::factory([
+
+    ])->count(1)->create();
+
+    livewire(ManageFeatureSegments::class)
+        ->assertCanSeeTableRecords($segments);
+});

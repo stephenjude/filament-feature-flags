@@ -12,17 +12,15 @@ trait WithFeatureResolver
      */
     public function resolve(mixed $scope): bool
     {
-        $defaultState = config('filament-feature-flags.default');
-
-        if (! is_a($scope, config('filament-feature-flags.scope'))) {
-            return $defaultState;
+        if (!is_a($scope, config('filament-feature-flags.scope'))) {
+            return config('filament-feature-flags.default');
         }
 
         return FeatureSegment::where('feature', get_class($this))
-            ->cursor()
-            ->whenEmpty(fn () => $defaultState, fn ($segments) => $segments->contains(
-                fn (FeatureSegment $segment) => $segment->resolve($scope)
-            ));
+            ->get()
+            ->whenEmpty(fn() => config('filament-feature-flags.default'))
+            ->whenNotEmpty(fn($segments) => $segments->map(fn(FeatureSegment $segment) => $segment->resolve($scope))
+                ->doesntContain(false));
     }
 
     public static function title(): string
