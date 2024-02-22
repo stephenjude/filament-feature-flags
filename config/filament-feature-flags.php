@@ -62,4 +62,8 @@ return [
          */
         'icon' => 'heroicon-o-cursor-arrow-ripple',
     ],
+
+    'resources' => [
+        Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource::class,
+    ],
 ];

@@ -7,11 +7,18 @@
 
 Filament implementation of feature flags and segmentation with Laravel Pennant.
 
-- Apply features for a **segment** of users. Example by country or currency.
-- Apply features for **individual** users. Example by email or ID.
-- Apply features for **all** users.
+- Apply features for a **segment** of users (i.e., by country or currency)
+- Apply features for **individual** users (i.e., by email or ID)
+- Apply features for **all** users
+- Create custom feature segmentation
+- Feature event handling (i.e., run code when a feature is activated/deactivated)
+- UI to modify a segment of users
+- Purge all resolved features from storage
 
 ![](./art/segments.png)
+
+## Learn More
+- [A Feature Flags Implementation for Filament - Laravel News](https://laravel-news.com/filament-feature-flags)
 
 ## Installation
 

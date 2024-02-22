@@ -4,7 +4,6 @@ namespace Stephenjude\FilamentFeatureFlag;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
 
 class FeatureFlagPlugin implements Plugin
 {
@@ -16,9 +15,7 @@ class FeatureFlagPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
-            ->resources([
-                FeatureSegmentResource::class,
-            ]);
+            ->resources(config('filament-feature-flags.resources'));
     }
 
     public function boot(Panel $panel): void
