@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 1.0.8 - 2024-02-23
+
+- Enhance feature resolve logic to meet broader criterias of segmentation by @stephenjude
+
 ## 1.0.7 - 2024-02-05
 
 - Translations and Resource via config by @eelco2k
