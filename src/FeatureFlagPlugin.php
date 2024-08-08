@@ -4,6 +4,7 @@ namespace Stephenjude\FilamentFeatureFlag;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use Laravel\Pennant\Feature;
 
 class FeatureFlagPlugin implements Plugin
 {
@@ -14,13 +15,11 @@ class FeatureFlagPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->resources(config('filament-feature-flags.resources'));
+        $panel->resources(config('filament-feature-flags.resources'));
     }
 
     public function boot(Panel $panel): void
     {
-        //
     }
 
     public static function make(): static

@@ -35,6 +35,7 @@ php artisan migrate
 ```
 
 ## Usage
+> This package is exclusively for class based features.
 
 You'll have to register the plugin in your panel provider.
 
@@ -48,6 +49,8 @@ public function panel(Panel $panel): Panel
 }
 ```
 
+> You don't have to call `Feature::discover()` in your serive provider boot method, this package already did that for you.
+> 
 ## Create Class Based Feature
 
 To create a class based feature, you may invoke the pennant:feature Artisan command.
