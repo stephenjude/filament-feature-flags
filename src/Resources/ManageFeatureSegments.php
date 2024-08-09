@@ -24,12 +24,12 @@ class ManageFeatureSegments extends ManageRecords
                 ->modalWidth('md')
                 ->modalHeading(__('Create Feature Segment'))
                 ->label(__('Segment Feature'))
-                ->after(fn(FeatureSegment $record) => $this->afterCreate($record)),
+                ->after(fn (FeatureSegment $record) => $this->afterCreate($record)),
 
             Actions\Action::make('activate_for_all')
                 ->label(__('Activate'))
                 ->modalWidth('md')
-                ->modalDescription(fn($record) => __('This action will activate the selected feature for users.'))
+                ->modalDescription(fn ($record) => __('This action will activate the selected feature for users.'))
                 ->form([
                     Select::make('feature')
                         ->label(__('Feature'))
@@ -38,13 +38,13 @@ class ManageFeatureSegments extends ManageRecords
                         ->columnSpanFull(),
                 ])
                 ->modalSubmitActionLabel(__('Activate'))
-                ->action(fn($data) => $this->activateForAll($data['feature'])),
+                ->action(fn ($data) => $this->activateForAll($data['feature'])),
 
             Actions\Action::make('deactivate_for_all')
                 ->label(__('Deactivate for All'))
                 ->modalWidth('md')
                 ->label(__('Deactivate'))
-                ->modalDescription(fn($record) => __('This action will deactivate this feature for users.'))
+                ->modalDescription(fn ($record) => __('This action will deactivate this feature for users.'))
                 ->form([
                     Select::make('feature')
                         ->label(__('Feature'))
@@ -54,12 +54,12 @@ class ManageFeatureSegments extends ManageRecords
                 ])
                 ->modalSubmitActionLabel(__('Deactivate'))
                 ->color('danger')
-                ->action(fn($data) => $this->deactivateForAll($data['feature'])),
+                ->action(fn ($data) => $this->deactivateForAll($data['feature'])),
 
             Actions\Action::make('purge_features')
                 ->modalWidth('md')
                 ->label(__('Purge'))
-                ->modalDescription(fn($record) => __('This action will purge resolved features from sotrage.'))
+                ->modalDescription(fn ($record) => __('This action will purge resolved features from sotrage.'))
                 ->form([
                     Select::make('feature')
                         ->label(__('Feature'))
@@ -69,7 +69,7 @@ class ManageFeatureSegments extends ManageRecords
                 ])
                 ->modalSubmitActionLabel(__('Purge'))
                 ->color('danger')
-                ->action(fn($data) => $this->purgeFeatures($data['feature'])),
+                ->action(fn ($data) => $this->purgeFeatures($data['feature'])),
         ];
     }
 
