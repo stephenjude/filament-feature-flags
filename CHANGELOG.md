@@ -2,6 +2,12 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 2.0.1 - 2024-08-09
+
+- Improved feature segment resolution.
+- Discover features automatically.
+- Updated ReadMe
+
 ## 2.0.0 - 2024-07-13
 
 - Laravel 11 support by @simonhamp
