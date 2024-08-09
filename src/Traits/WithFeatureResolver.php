@@ -12,23 +12,22 @@ trait WithFeatureResolver
      */
     public function resolve(mixed $scope): bool
     {
-        if (! is_a($scope, config('filament-feature-flags.scope'))) {
+        if (!is_a($scope, config('filament-feature-flags.scope'))) {
             return config('filament-feature-flags.default');
         }
 
         /*
-         * This resolution loop iterates through all segmentations associated with this feature
-         * and ensures that all resolved segments are true. If any resolved segment returns
-         * false, this feature resolution will be false.
-         */
+        * This resolution loop iterates through all segmentations associated with this feature
+        * by checking deactivated segments first, then checking activated segments;
+        * and if any resolve is True, this feature resolution will be True.
+        */
         return FeatureSegment::where('feature', get_class($this))
             ->get()
             ->whenEmpty(
-                fn () => config('filament-feature-flags.default'),
-                fn ($segments) => $segments->map(fn (FeatureSegment $segment) => $segment->resolve($scope))
-                    ->doesntContain(
-                        false
-                    ) // Makes sure that multiple segmentations are all true, if not resolve as false.
+                fn() => config('filament-feature-flags.default'),
+                fn($segments) => $segments->sortBy('active')
+                    ->map(fn(FeatureSegment $segment) => $segment->resolve($scope))
+                    ->contains(true)
             );
     }
 

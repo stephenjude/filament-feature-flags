@@ -28,6 +28,8 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
+        config()->set('pennant.default', 'array');
+
         /*
         $migration = include __DIR__.'/../database/migrations/create_filament-feature-flags_table.php.stub';
         $migration->up();
