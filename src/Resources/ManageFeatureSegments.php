@@ -59,7 +59,7 @@ class ManageFeatureSegments extends ManageRecords
             Actions\Action::make('purge_features')
                 ->modalWidth('md')
                 ->label(__('Purge'))
-                ->modalDescription(fn ($record) => __('This action will purge resolved features from sotrage.'))
+                ->modalDescription(fn ($record) => __('This action will purge resolved features from storage.'))
                 ->form([
                     Select::make('feature')
                         ->label(__('Feature'))
