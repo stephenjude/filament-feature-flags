@@ -1,3 +1,5 @@
+![](./art/banner.jpg)
+
 # Filament Feature Flags
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/stephenjude/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/stephenjude/filament-feature-flags)
