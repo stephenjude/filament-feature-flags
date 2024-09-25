@@ -8,7 +8,6 @@ use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Laravel\Pennant\Feature;
-use Saade\FilamentLaravelLog\FilamentLaravelLogPlugin;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureActivatedForAll;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;

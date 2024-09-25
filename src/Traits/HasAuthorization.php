@@ -9,9 +9,9 @@ trait HasAuthorization
 {
     use EvaluatesClosures;
 
-    public Closure | bool $authorized = true;
+    public Closure|bool $authorized = true;
 
-    public function authorize(Closure | bool $condition = true): static
+    public function authorize(Closure|bool $condition = true): static
     {
         $this->authorized = $condition;
 
