@@ -50,9 +50,16 @@ public function panel(Panel $panel): Panel
         );
 }
 ```
+> You don't have to call `Feature::discover()` in your service provider boot method, this package already did that for you.
 
-> You don't have to call `Feature::discover()` in your serive provider boot method, this package already did that for you.
-> 
+### Authorization/Access Control
+You can authorize the plugin for users with a specific role/permission:
+
+```php
+FeatureFlagPlugin::make()
+    ->authorize(fn() => auth()->user()->can('view.features'));
+ ```
+
 ## Create Class Based Feature
 
 To create a class based feature, you may invoke the pennant:feature Artisan command.
