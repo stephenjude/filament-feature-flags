@@ -20,9 +20,7 @@ class FeatureFlagPlugin implements Plugin
         $panel->resources(config('filament-feature-flags.resources'));
     }
 
-    public function boot(Panel $panel): void
-    {
-    }
+    public function boot(Panel $panel): void {}
 
     public static function make(): static
     {

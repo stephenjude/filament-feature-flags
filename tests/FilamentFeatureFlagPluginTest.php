@@ -4,7 +4,7 @@ use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
 use Stephenjude\FilamentFeatureFlag\Resources\ManageFeatureSegments;
 
-use function Pest\Laravel\{get};
+use function Pest\Laravel\get;
 use function Pest\Livewire\livewire;
 
 it('can render page', function () {
