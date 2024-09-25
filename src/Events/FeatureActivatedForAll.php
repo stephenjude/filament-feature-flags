@@ -11,7 +11,5 @@ class FeatureActivatedForAll implements ShouldDispatchAfterCommit
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(public string $feature, public mixed $authUser)
-    {
-    }
+    public function __construct(public string $feature, public mixed $authUser) {}
 }

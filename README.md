@@ -1,3 +1,5 @@
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/banner.jpg)
+
 # Filament Feature Flags
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/stephenjude/filament-feature-flags.svg?style=flat-square)](https://packagist.org/packages/stephenjude/filament-feature-flags)
@@ -15,7 +17,7 @@ Filament implementation of feature flags and segmentation with Laravel Pennant.
 - UI to modify a segment of users
 - Purge all resolved features from storage
 
-![](./art/segments.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/segments.png)
 
 ## Learn More
 - [A Feature Flags Implementation for Filament - Laravel News](https://laravel-news.com/filament-feature-flags)
@@ -78,7 +80,7 @@ class WalletFunding
 ## Feature Segmentation 
 By default, this package resolves scope using the `App\Models\User` model and the default segment applies features for individual or group of users by email.
 
-![](./art/email.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/email.png)
 
 To add a new segment, add this code snippet below to the **segments** section on the `filament-feature-flag` config:
 
@@ -93,7 +95,7 @@ To add a new segment, add this code snippet below to the **segments** section on
     ],
 ],
 ```
-![](./art/currency.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/currency.png)
 
 ### Example 2: Adding Segment For Country
 ```php
@@ -106,7 +108,7 @@ To add a new segment, add this code snippet below to the **segments** section on
     ],
 ],
 ```
-![](./art/country.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/country.png)
 
 ## Feature Events
 
@@ -201,11 +203,11 @@ return [
 
 ## Screenshots:
 
-![](./art/activate.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/activate.png)
 
-![](./art/deactivate.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/deactivate.png)
 
-![](./art/purge.png)
+![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/purge.png)
 
 ## Testing
 

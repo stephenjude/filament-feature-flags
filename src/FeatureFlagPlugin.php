@@ -4,7 +4,6 @@ namespace Stephenjude\FilamentFeatureFlag;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Laravel\Pennant\Feature;
 use Stephenjude\FilamentFeatureFlag\Traits\HasAuthorization;
 
 class FeatureFlagPlugin implements Plugin

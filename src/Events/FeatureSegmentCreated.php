@@ -12,7 +12,5 @@ class FeatureSegmentCreated implements ShouldDispatchAfterCommit
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(public FeatureSegment $featureSegment, public mixed $authUser)
-    {
-    }
+    public function __construct(public FeatureSegment $featureSegment, public mixed $authUser) {}
 }
