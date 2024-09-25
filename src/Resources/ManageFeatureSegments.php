@@ -8,9 +8,11 @@ use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ManageRecords;
 use Laravel\Pennant\Feature;
+use Saade\FilamentLaravelLog\FilamentLaravelLogPlugin;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureActivatedForAll;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureDeactivatedForAll;
 use Stephenjude\FilamentFeatureFlag\Events\FeatureSegmentCreated;
+use Stephenjude\FilamentFeatureFlag\FeatureFlagPlugin;
 use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class ManageFeatureSegments extends ManageRecords
@@ -112,5 +114,10 @@ class ManageFeatureSegments extends ManageRecords
         Feature::purge($featureSegment->feature);
 
         FeatureSegmentCreated::dispatch($featureSegment, Filament::auth()->user());
+    }
+
+    public static function canAccess(array $parameters = []): bool
+    {
+        return FeatureFlagPlugin::get()->authorized();
     }
 }

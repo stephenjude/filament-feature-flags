@@ -5,9 +5,12 @@ namespace Stephenjude\FilamentFeatureFlag;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Laravel\Pennant\Feature;
+use Stephenjude\FilamentFeatureFlag\Traits\HasAuthorization;
 
 class FeatureFlagPlugin implements Plugin
 {
+    use HasAuthorization;
+
     public function getId(): string
     {
         return 'filament-feature-flag';
@@ -25,5 +28,13 @@ class FeatureFlagPlugin implements Plugin
     public static function make(): static
     {
         return app(static::class);
+    }
+
+    public static function get(): static
+    {
+        /** @var static $plugin */
+        $plugin = filament(app(static::class)->getId());
+
+        return $plugin;
     }
 }
