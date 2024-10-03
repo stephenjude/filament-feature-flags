@@ -2,6 +2,12 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 2.1.0 - 2024-10-03
+
+- Add `authorise()` method for access control and fixed issue #14
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/2.0.2...2.1.0
+
 ## 2.0.2 - 2024-09-17
 
 - Reintroduce Laravel 11 support.
