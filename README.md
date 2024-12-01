@@ -45,9 +45,9 @@ You'll have to register the plugin in your panel provider.
 public function panel(Panel $panel): Panel
 {
     return $panel
-        ->plugin(
-            Stephenjude\FilamentFeatureFlag\FeatureFlagPlugin::make()
-        );
+        ->plugins([
+            \Stephenjude\FilamentFeatureFlag\FeatureFlagPlugin::make()
+        ]);
 }
 ```
 > You don't have to call `Feature::discover()` in your service provider boot method, this package already did that for you.
