@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 2.1.1 - 2024-12-01
+
+- use array and root backslash when registering plugins by @chrillep in #16
+
 ## 2.1.0 - 2024-10-03
 
 - Add `authorise()` method for access control and fixed issue #14
