@@ -2,6 +2,7 @@
 
 namespace Stephenjude\FilamentFeatureFlag;
 
+use Illuminate\Filesystem\Filesystem;
 use Laravel\Pennant\Feature;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -19,14 +20,12 @@ class FeatureFlagPluginServiceProvider extends PackageServiceProvider
 
     public function bootingPackage()
     {
-        $finder = new Finder();
-        $finder->directories()->name('Feature')->in(app_path());
+
         /**
         * `Feature` folder are required by the `laravel-pennant` if using a `discovery` method
-         * Boot only the Feature::discovers() if the Feature folder in app folder of laravel is existing.
+         * Boot only the `Feature::discover()` if the Feature folder in app folder of laravel is existing.
          */
-        if($finder->hasResults()) {
-            Feature::discover();
-        }
+        (new Filesystem)->ensureDirectoryExists(app_path('Feature'));
+        Feature::discover();
     }
 }
