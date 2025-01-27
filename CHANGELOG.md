@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 2.1.2 - 2025-01-27
+
+- Ensure App\Features directory exist before discovery by @MarJose123 in #19
+
 ## 2.1.1 - 2024-12-01
 
 - use array and root backslash when registering plugins by @chrillep in #16
