@@ -2,6 +2,10 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 2.1.3 - 2025-01-28
+
+- Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 #20
+
 ## 2.1.2 - 2025-01-27
 
 - Ensure App\Features directory exist before discovery by @MarJose123 in #19
