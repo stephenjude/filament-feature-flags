@@ -2,6 +2,15 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 3.0.0 - 2025-03-07
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/stephenjude/filament-feature-flags/pull/21
+* Support Laravel 12.x  by @chrillep in https://github.com/stephenjude/filament-feature-flags/pull/22
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/2.1.3...3.0.0
+
 ## 2.1.3 - 2025-01-28
 
 - Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 #20
