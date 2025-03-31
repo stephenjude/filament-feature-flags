@@ -8,8 +8,8 @@ use function Pest\Laravel\get;
 use function Pest\Livewire\livewire;
 
 it('can render page', function () {
-get(FeatureSegmentResource::getUrl())->assertOk();
-    });
+    get(FeatureSegmentResource::getUrl())->assertOk();
+});
 
 it('can list feature segments', function () {
     $segments = FeatureSegment::factory()->count(1)->create();
