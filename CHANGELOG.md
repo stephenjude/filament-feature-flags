@@ -2,6 +2,18 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 3.0.1 - 2025-03-31
+
+### What's Changed
+
+* Changed the ensureDirectoryExists from "feature" folder to "features"… by @yash-tiwari18 in https://github.com/stephenjude/filament-feature-flags/pull/23
+
+### New Contributors
+
+* @yash-tiwari18 made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/23
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/3.0.0...3.0.1
+
 ## 3.0.0 - 2025-03-07
 
 ### What's Changed
