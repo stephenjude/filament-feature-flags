@@ -13,7 +13,7 @@ trait WithFeatureResolver
     public function resolve(mixed $scope): bool
     {
         if (! is_a($scope, config('filament-feature-flags.scope'))) {
-            return config('filament-feature-flags.default');
+            return $this->resolveDefaultValue($scope);
         }
 
         /*
@@ -24,11 +24,27 @@ trait WithFeatureResolver
         return FeatureSegment::where('feature', get_class($this))
             ->get()
             ->whenEmpty(
-                fn () => config('filament-feature-flags.default'),
+                fn () => $this->resolveDefaultValue($scope),
                 fn ($segments) => $segments->sortBy('active')
                     ->map(fn (FeatureSegment $segment) => $segment->resolve($scope))
                     ->contains(true)
             );
+    }
+
+    /**
+     * Resolve the default value from the feature flag if possible.
+     */
+    protected function resolveDefaultValue(mixed $scope): bool
+    {
+        if (property_exists($this, 'defaultValue')) {
+            return (bool) $this->defaultValue;
+        }
+
+        if (method_exists($this, 'defaultValue')) {
+            return (bool) $this->defaultValue($scope);
+        }
+
+        return config('filament-feature-flags.default');
     }
 
     public static function title(): string
