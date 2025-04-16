@@ -2,6 +2,18 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 3.0.2 - 2025-04-16
+
+### What's Changed
+
+* Allow features to override the default value by @RVxLab in https://github.com/stephenjude/filament-feature-flags/pull/24
+
+### New Contributors
+
+* @RVxLab made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/24
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/3.0.1...3.0.2
+
 ## 3.0.1 - 2025-03-31
 
 ### What's Changed
