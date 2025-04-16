@@ -84,6 +84,49 @@ class WalletFunding
 }
 ```
 
+## Overriding Default Values per Feature
+
+If you need more control over the default value of a feature, you can either add a `defaultValue` property.
+
+```php
+<?php
+
+namespace App\Features;
+
+use Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolver;
+
+class WalletFunding
+{
+    use WithFeatureResolver;
+
+    protected bool $defaultValue = false;
+}
+```
+
+Or a `defineValue` method.
+
+```php
+<?php
+
+namespace App\Features;
+
+use Stephenjude\FilamentFeatureFlag\Traits\WithFeatureResolver;
+
+class WalletFunding
+{
+    use WithFeatureResolver;
+
+    protected function defaultValue(mixed $scope): bool
+    {
+        return false;
+    }
+}
+```
+
+The result of these methods will get cast to a boolean.
+
+If neither are defined, the default value gets fetched from the `filament-feature-flags.default` config entry.
+
 ## Feature Segmentation 
 By default, this package resolves scope using the `App\Models\User` model and the default segment applies features for individual or group of users by email.
 
