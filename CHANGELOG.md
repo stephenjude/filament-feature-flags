@@ -2,6 +2,15 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 3.0.3 - 2025-06-17
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot in https://github.com/stephenjude/filament-feature-flags/pull/25
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot in https://github.com/stephenjude/filament-feature-flags/pull/27
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/3.0.2...3.0.3
+
 ## 3.0.2 - 2025-04-16
 
 ### What's Changed
