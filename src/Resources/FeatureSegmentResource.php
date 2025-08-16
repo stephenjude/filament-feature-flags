@@ -6,9 +6,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Components\Utilities\{Get, Set};
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
@@ -54,7 +54,7 @@ class FeatureSegmentResource extends Resource
 
                 Select::make('scope')
                     ->live()
-                    ->afterStateUpdated(fn(Set $set) => $set('values', null))
+                    ->afterStateUpdated(fn (Set $set) => $set('values', null))
                     ->required()
                     ->columnSpanFull()
                     ->options(FeatureSegment::segmentOptionsList()),
@@ -66,7 +66,7 @@ class FeatureSegmentResource extends Resource
                     ->options([true => 'Activate', false => 'Deactivate'])
                     ->unique(
                         ignoreRecord: true,
-                        modifyRuleUsing: fn(Unique $rule, Get $get) => $rule
+                        modifyRuleUsing: fn (Unique $rule, Get $get) => $rule
                             ->where('feature', $get('feature'))
                             ->where('scope', $get('scope'))
                             ->where('active', $get('active'))
@@ -92,7 +92,7 @@ class FeatureSegmentResource extends Resource
                     ->badge(),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'ACTIVATED' => 'success',
                         'DEACTIVATED' => 'danger',
                     })
@@ -112,7 +112,7 @@ class FeatureSegmentResource extends Resource
                 EditAction::make()
                     ->label('Modify')
                     ->modalHeading('Modify Feature Segment')
-                    ->after(fn(FeatureSegment $record) => FeatureSegmentModified::dispatch(
+                    ->after(fn (FeatureSegment $record) => FeatureSegmentModified::dispatch(
                         $record,
                         Filament::auth()->user()
                     )),
@@ -120,9 +120,9 @@ class FeatureSegmentResource extends Resource
                 DeleteAction::make()
                     ->label('Remove')
                     ->modalHeading('Removing this feature segment cannot be undone!')
-                    ->modalDescription(fn(FeatureSegment $record) => $record->description)
-                    ->after(fn() => FeatureSegmentRemoved::dispatch(Filament::auth()->user()))
-                    ->before(fn(FeatureSegment $record) => RemovingFeatureSegment::dispatch(
+                    ->modalDescription(fn (FeatureSegment $record) => $record->description)
+                    ->after(fn () => FeatureSegmentRemoved::dispatch(Filament::auth()->user()))
+                    ->before(fn (FeatureSegment $record) => RemovingFeatureSegment::dispatch(
                         $record,
                         Filament::auth()->user()
                     )),
@@ -153,15 +153,15 @@ class FeatureSegmentResource extends Resource
                         ->searchable()
                         ->columnSpanFull()
                         ->label(str($column)->plural()->title())
-                        ->hidden(fn(Get $get) => $get('scope') !== $column)
+                        ->hidden(fn (Get $get) => $get('scope') !== $column)
                         ->getOptionLabelsUsing(
-                            fn(array $values): array => $model::query()
+                            fn (array $values): array => $model::query()
                                 ->whereIn($value, $values)
                                 ->pluck($value, $key)
                                 ->all()
                         )
                         ->getSearchResultsUsing(
-                            fn(string $search): array => $model::query()
+                            fn (string $search): array => $model::query()
                                 ->where($value, 'like', "%{$search}%")
                                 ->limit(50)->pluck($value, $key)
                                 ->toArray()
