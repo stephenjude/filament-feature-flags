@@ -2,6 +2,15 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 3.0.4 - 2025-08-16
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/28
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/29
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/3.0.3...3.0.4
+
 ## 3.0.3 - 2025-06-17
 
 ### What's Changed
