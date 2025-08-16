@@ -2,12 +2,14 @@
 
 namespace Stephenjude\FilamentFeatureFlag\Resources;
 
+use Filament\Actions\DeleteAction;
+use Filament\Actions\EditAction;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Form;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -41,9 +43,9 @@ class FeatureSegmentResource extends Resource
         return config('filament-feature-flags.panel.icon');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Select::make('feature')
                     ->required()
@@ -70,7 +72,7 @@ class FeatureSegmentResource extends Resource
                             ->where('active', $get('active'))
                     )
                     ->validationMessages([
-                        'unique' => 'Feature segmentation already exists! Please note that each feature scope can only have an activated and a deactivated segment. Modify existing segment or remove it and create a new segment.',
+                        'unique' => 'Feature segmentation already exists. Each feature scope can only have one activated segment and one deactivated segment. To continue, please modify the existing segment, or remove it and create a new one.',
                     ])
                     ->required()
                     ->columnSpanFull(),
@@ -106,8 +108,8 @@ class FeatureSegmentResource extends Resource
                 Tables\Filters\SelectFilter::make('scope')
                     ->options(FeatureSegment::segmentOptionsList()),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make()
+            ->recordActions([
+                EditAction::make()
                     ->label('Modify')
                     ->modalHeading('Modify Feature Segment')
                     ->after(fn (FeatureSegment $record) => FeatureSegmentModified::dispatch(
@@ -115,15 +117,15 @@ class FeatureSegmentResource extends Resource
                         Filament::auth()->user()
                     )),
 
-                Tables\Actions\DeleteAction::make()
+                DeleteAction::make()
+                    ->label('Remove')
                     ->modalHeading('Removing this feature segment cannot be undone!')
                     ->modalDescription(fn (FeatureSegment $record) => $record->description)
-                    ->label('Remove')
+                    ->after(fn () => FeatureSegmentRemoved::dispatch(Filament::auth()->user()))
                     ->before(fn (FeatureSegment $record) => RemovingFeatureSegment::dispatch(
                         $record,
                         Filament::auth()->user()
-                    ))
-                    ->after(fn () => FeatureSegmentRemoved::dispatch(Filament::auth()->user())),
+                    )),
             ]);
     }
 
@@ -145,15 +147,24 @@ class FeatureSegmentResource extends Resource
                     $key = $segment['source']['key'];
 
                     return Select::make('values')
-                        ->label(str($column)->plural()->title())
-                        ->hidden(fn (Get $get) => $get('scope') !== $column)
-                        ->required()
+                        ->preload()
                         ->multiple()
+                        ->required()
                         ->searchable()
                         ->columnSpanFull()
+                        ->label(str($column)->plural()->title())
+                        ->hidden(fn (Get $get) => $get('scope') !== $column)
+                        ->getOptionLabelsUsing(
+                            fn (array $values): array => $model::query()
+                                ->whereIn($value, $values)
+                                ->pluck($value, $key)
+                                ->all()
+                        )
                         ->getSearchResultsUsing(
-                            fn (string $search): array => $model::where($value, 'like', "%{$search}%")
-                                ->limit(50)->pluck($value, $key)->toArray()
+                            fn (string $search): array => $model::query()
+                                ->where($value, 'like', "%{$search}%")
+                                ->limit(50)->pluck($value, $key)
+                                ->toArray()
                         );
                 }
             )

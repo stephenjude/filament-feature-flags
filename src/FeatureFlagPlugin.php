@@ -17,7 +17,12 @@ class FeatureFlagPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->resources(config('filament-feature-flags.resources'));
+        $panel->when(
+            value: fn () => $this->authorized(),
+            callback: function (Panel $panel) {
+                $panel->resources(config('filament-feature-flags.resources'));
+            }
+        );
     }
 
     public function boot(Panel $panel): void {}

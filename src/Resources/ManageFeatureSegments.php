@@ -3,6 +3,7 @@
 namespace Stephenjude\FilamentFeatureFlag\Resources;
 
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
@@ -27,11 +28,11 @@ class ManageFeatureSegments extends ManageRecords
                 ->label(__('Segment Feature'))
                 ->after(fn (FeatureSegment $record) => $this->afterCreate($record)),
 
-            Actions\Action::make('activate_for_all')
+            Action::make('activate_for_all')
                 ->label(__('Activate'))
                 ->modalWidth('md')
                 ->modalDescription(fn ($record) => __('This action will activate the selected feature for users.'))
-                ->form([
+                ->schema([
                     Select::make('feature')
                         ->label(__('Feature'))
                         ->required()
@@ -41,12 +42,12 @@ class ManageFeatureSegments extends ManageRecords
                 ->modalSubmitActionLabel(__('Activate'))
                 ->action(fn ($data) => $this->activateForAll($data['feature'])),
 
-            Actions\Action::make('deactivate_for_all')
+            Action::make('deactivate_for_all')
                 ->label(__('Deactivate for All'))
                 ->modalWidth('md')
                 ->label(__('Deactivate'))
                 ->modalDescription(fn ($record) => __('This action will deactivate this feature for users.'))
-                ->form([
+                ->schema([
                     Select::make('feature')
                         ->label(__('Feature'))
                         ->required()
@@ -57,11 +58,11 @@ class ManageFeatureSegments extends ManageRecords
                 ->color('danger')
                 ->action(fn ($data) => $this->deactivateForAll($data['feature'])),
 
-            Actions\Action::make('purge_features')
+            Action::make('purge_features')
                 ->modalWidth('md')
                 ->label(__('Purge'))
                 ->modalDescription(fn ($record) => __('This action will purge resolved features from storage.'))
-                ->form([
+                ->schema([
                     Select::make('feature')
                         ->label(__('Feature'))
                         ->selectablePlaceholder(false)
