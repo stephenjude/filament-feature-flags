@@ -2,6 +2,18 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 4.0.0 - 2025-08-16
+
+### What's Changed
+
+* Filament v4 Support by @stephenjude in https://github.com/stephenjude/filament-feature-flags/pull/31
+
+### New Contributors
+
+* @stephenjude made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/31
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/3.0.4...4.0.0
+
 ## 3.0.4 - 2025-08-16
 
 ### What's Changed
