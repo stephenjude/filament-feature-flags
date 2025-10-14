@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 4.0.1 - 2025-10-14
+
+### What's Changed
+
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/32
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/4.0.0...4.0.1
+
 ## 4.0.0 - 2025-08-16
 
 ### What's Changed
