@@ -2,6 +2,20 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.0.0 - 2026-01-20
+
+### What's Changed
+
+* Support for Filament v5 by @mattwells-coex in https://github.com/stephenjude/filament-feature-flags/pull/38
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/36
+* Bump dependabot/fetch-metadata from 2.4.0 to 2.5.0 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/37
+
+### New Contributors
+
+* @mattwells-coex made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/38
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/4.0.1...5.0.0
+
 ## 4.0.1 - 2025-10-14
 
 ### What's Changed
