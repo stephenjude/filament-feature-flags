@@ -79,7 +79,13 @@ class FeatureSegment extends Model
 
     public static function featureOptionsList(): array
     {
-        return collect(self::allFeatures())->pluck('name', 'id')->toArray();
+        return collect(self::allFeatures())
+            ->mapWithKeys(function (array $feature): array {
+                $label = sprintf('%s (%s)', $feature['name'], $feature['state'] ? 'Active' : 'Inactive');
+
+                return [$feature['id'] => $label];
+            })
+            ->toArray();
     }
 
     public static function segmentOptionsList(): array
