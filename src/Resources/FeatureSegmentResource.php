@@ -25,17 +25,17 @@ class FeatureSegmentResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return config('filament-feature-flags.panel.group');
+        return __(config('filament-feature-flags.panel.group'));
     }
 
     public static function getNavigationLabel(): string
     {
-        return config('filament-feature-flags.panel.label');
+        return __(config('filament-feature-flags.panel.label'));
     }
 
     public static function getModelLabel(): string
     {
-        return config('filament-feature-flags.panel.title');
+        return __(config('filament-feature-flags.panel.title'));
     }
 
     public static function getNavigationIcon(): ?string
@@ -62,8 +62,8 @@ class FeatureSegmentResource extends Resource
                 ...static::createValuesFields(),
 
                 Select::make('active')
-                    ->label('Status')
-                    ->options([true => 'Activate', false => 'Deactivate'])
+                    ->label(__('filament-feature-flags::messages.form.status'))
+                    ->options([true => __('filament-feature-flags::messages.form.activate'), false => __('filament-feature-flags::messages.form.deactivate')])
                     ->unique(
                         ignoreRecord: true,
                         modifyRuleUsing: fn (Unique $rule, Get $get) => $rule
@@ -72,7 +72,7 @@ class FeatureSegmentResource extends Resource
                             ->where('active', $get('active'))
                     )
                     ->validationMessages([
-                        'unique' => 'Feature segmentation already exists. Each feature scope can only have one activated segment and one deactivated segment. To continue, please modify the existing segment, or remove it and create a new one.',
+                        'unique' => __('filament-feature-flags::messages.form.unique_validation'),
                     ])
                     ->required()
                     ->columnSpanFull(),
@@ -87,7 +87,7 @@ class FeatureSegmentResource extends Resource
                     ->sortable(['feature'])
                     ->searchable(['feature']),
                 Tables\Columns\TextColumn::make('values')
-                    ->label('Segment')
+                    ->label(__('filament-feature-flags::messages.table.segment'))
                     ->wrap()
                     ->badge(),
                 Tables\Columns\TextColumn::make('status')
@@ -110,16 +110,16 @@ class FeatureSegmentResource extends Resource
             ])
             ->recordActions([
                 EditAction::make()
-                    ->label('Modify')
-                    ->modalHeading('Modify Feature Segment')
+                    ->label(__('filament-feature-flags::messages.actions.modify'))
+                    ->modalHeading(__('filament-feature-flags::messages.actions.modify_heading'))
                     ->after(fn (FeatureSegment $record) => FeatureSegmentModified::dispatch(
                         $record,
                         Filament::auth()->user()
                     )),
 
                 DeleteAction::make()
-                    ->label('Remove')
-                    ->modalHeading('Removing this feature segment cannot be undone!')
+                    ->label(__('filament-feature-flags::messages.actions.remove'))
+                    ->modalHeading(__('filament-feature-flags::messages.actions.remove_heading'))
                     ->modalDescription(fn (FeatureSegment $record) => $record->description)
                     ->after(fn () => FeatureSegmentRemoved::dispatch(Filament::auth()->user()))
                     ->before(fn (FeatureSegment $record) => RemovingFeatureSegment::dispatch(

@@ -24,52 +24,51 @@ class ManageFeatureSegments extends ManageRecords
         return [
             Actions\CreateAction::make()
                 ->modalWidth('md')
-                ->modalHeading(__('Create Feature Segment'))
-                ->label(__('Segment Feature'))
+                ->modalHeading(__('filament-feature-flags::messages.actions.create_segment'))
+                ->label(__('filament-feature-flags::messages.actions.segment_feature'))
                 ->after(fn (FeatureSegment $record) => $this->afterCreate($record)),
 
             Action::make('activate_for_all')
-                ->label(__('Activate'))
+                ->label(__('filament-feature-flags::messages.actions.activate'))
                 ->modalWidth('md')
-                ->modalDescription(fn ($record) => __('This action will activate the selected feature for users.'))
+                ->modalDescription(fn ($record) => __('filament-feature-flags::messages.actions.activate_description'))
                 ->schema([
                     Select::make('feature')
-                        ->label(__('Feature'))
+                        ->label(__('filament-feature-flags::messages.form.feature'))
                         ->required()
                         ->options(FeatureSegment::featureOptionsList())
                         ->columnSpanFull(),
                 ])
-                ->modalSubmitActionLabel(__('Activate'))
+                ->modalSubmitActionLabel(__('filament-feature-flags::messages.actions.activate'))
                 ->action(fn ($data) => $this->activateForAll($data['feature'])),
 
             Action::make('deactivate_for_all')
-                ->label(__('Deactivate for All'))
+                ->label(__('filament-feature-flags::messages.actions.deactivate'))
                 ->modalWidth('md')
-                ->label(__('Deactivate'))
-                ->modalDescription(fn ($record) => __('This action will deactivate this feature for users.'))
+                ->modalDescription(fn ($record) => __('filament-feature-flags::messages.actions.deactivate_description'))
                 ->schema([
                     Select::make('feature')
-                        ->label(__('Feature'))
+                        ->label(__('filament-feature-flags::messages.form.feature'))
                         ->required()
                         ->options(FeatureSegment::featureOptionsList())
                         ->columnSpanFull(),
                 ])
-                ->modalSubmitActionLabel(__('Deactivate'))
+                ->modalSubmitActionLabel(__('filament-feature-flags::messages.actions.deactivate'))
                 ->color('danger')
                 ->action(fn ($data) => $this->deactivateForAll($data['feature'])),
 
             Action::make('purge_features')
                 ->modalWidth('md')
-                ->label(__('Purge'))
-                ->modalDescription(fn ($record) => __('This action will purge resolved features from storage.'))
+                ->label(__('filament-feature-flags::messages.actions.purge'))
+                ->modalDescription(fn ($record) => __('filament-feature-flags::messages.actions.purge_description'))
                 ->schema([
                     Select::make('feature')
-                        ->label(__('Feature'))
+                        ->label(__('filament-feature-flags::messages.form.feature'))
                         ->selectablePlaceholder(false)
-                        ->options(array_merge([null => __('All Features')], FeatureSegment::featureOptionsList()))
+                        ->options(array_merge([null => __('filament-feature-flags::messages.actions.all_features')], FeatureSegment::featureOptionsList()))
                         ->columnSpanFull(),
                 ])
-                ->modalSubmitActionLabel(__('Purge'))
+                ->modalSubmitActionLabel(__('filament-feature-flags::messages.actions.purge'))
                 ->color('danger')
                 ->action(fn ($data) => $this->purgeFeatures($data['feature'])),
         ];
@@ -79,8 +78,8 @@ class ManageFeatureSegments extends ManageRecords
     {
         Feature::activateForEveryone($feature);
 
-        Notification::make()->success()->title(__('Done!'))
-            ->body(__("{$feature::title()} activated for users."))->send();
+        Notification::make()->success()->title(__('filament-feature-flags::messages.notifications.done'))
+            ->body(__('filament-feature-flags::messages.notifications.activated_for_all', ['feature' => $feature::title()]))->send();
 
         FeatureActivatedForAll::dispatch($feature, Filament::auth()->user());
     }
@@ -89,8 +88,8 @@ class ManageFeatureSegments extends ManageRecords
     {
         Feature::deactivateForEveryone($feature);
 
-        Notification::make()->success()->title(__('Done!'))
-            ->body(__("{$feature::title()} deactivated for users."))
+        Notification::make()->success()->title(__('filament-feature-flags::messages.notifications.done'))
+            ->body(__('filament-feature-flags::messages.notifications.deactivated_for_all', ['feature' => $feature::title()]))
             ->send();
 
         FeatureDeactivatedForAll::dispatch($feature, Filament::auth()->user());
@@ -101,11 +100,11 @@ class ManageFeatureSegments extends ManageRecords
         Feature::purge($feature);
 
         $featureTitle = is_null($feature)
-            ? __('All features')
-            : $feature::title().__(' feature');
+            ? __('filament-feature-flags::messages.notifications.all_features_purged')
+            : __('filament-feature-flags::messages.notifications.feature_purged', ['feature' => $feature::title()]);
 
-        Notification::make()->success()->title(__('Done!'))
-            ->body(__("$featureTitle successfully purged from storage."))
+        Notification::make()->success()->title(__('filament-feature-flags::messages.notifications.done'))
+            ->body($featureTitle)
             ->send();
     }
 
