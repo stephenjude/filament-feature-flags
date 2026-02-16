@@ -2,6 +2,18 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.0.1 - 2026-02-16
+
+### What's Changed
+
+* Add internationalization (i18n) support by @k1rana in https://github.com/stephenjude/filament-feature-flags/pull/39
+
+### New Contributors
+
+* @k1rana made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/39
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.0.0...5.0.1
+
 ## 5.0.0 - 2026-01-20
 
 ### What's Changed
