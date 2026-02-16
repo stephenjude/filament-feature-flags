@@ -14,6 +14,7 @@ class FeatureFlagPluginServiceProvider extends PackageServiceProvider
         $package
             ->name('filament-feature-flags')
             ->hasConfigFile()
+            ->hasTranslations()
             ->hasMigration('create_filament_feature_flags_table');
     }
 

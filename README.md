@@ -251,6 +251,16 @@ return [
 ];
 ```
 
+## Localization
+
+The package supports i18n. Publish the translation files to customize or add new locales:
+
+```bash
+php artisan vendor:publish --tag=filament-feature-flags-translations
+```
+
+Then create `lang/vendor/filament-feature-flags/{locale}/messages.php` for your language.
+
 ## Screenshots:
 
 ![](https://raw.githubusercontent.com/stephenjude/filament-feature-flags/main/art/activate.png)

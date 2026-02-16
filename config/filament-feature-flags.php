@@ -44,18 +44,21 @@ return [
     'panel' => [
         /*
          * Navigation group for admin panel resource.
+         * Supports plain text or translation keys (e.g. 'filament-feature-flags::messages.panel.group').
          */
-        'group' => 'Settings',
+        'group' => 'filament-feature-flags::messages.panel.group',
 
         /*
          * Navigation item label for admin panel resource.
+         * Supports plain text or translation keys.
          */
-        'label' => 'Manage Features',
+        'label' => 'filament-feature-flags::messages.panel.label',
 
         /*
          * Resource title for admin panel resource.
+         * Supports plain text or translation keys.
          */
-        'title' => 'Manage Features & Segments',
+        'title' => 'filament-feature-flags::messages.panel.title',
 
         /*
          * Navigation item icon for admin panel resource.
