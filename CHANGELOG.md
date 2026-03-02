@@ -2,6 +2,18 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.0.2 - 2026-03-02
+
+### What's Changed
+
+* fix: fix disabled features when database values are numbers in strings by @hansgoed in https://github.com/stephenjude/filament-feature-flags/pull/40
+
+### New Contributors
+
+* @hansgoed made their first contribution in https://github.com/stephenjude/filament-feature-flags/pull/40
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.0.1...5.0.2
+
 ## 5.0.1 - 2026-02-16
 
 ### What's Changed
