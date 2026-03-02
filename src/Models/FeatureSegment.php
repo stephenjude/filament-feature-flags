@@ -24,7 +24,11 @@ class FeatureSegment extends Model
 
     public function resolve(mixed $scope): bool
     {
-        $meetsSegmentCriteria = in_array($scope->{$this->scope}, $this->values, true);
+        $meetsSegmentCriteria = in_array(
+            (string) $scope->{$this->scope},
+            array_map('strval', $this->values),
+            true
+        );
 
         /*
          * This check is TRUE if the segment is activated and the scope meets the criteria. Additionally,
