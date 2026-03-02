@@ -38,7 +38,8 @@ it('can compare integers with strings', function (int $value, bool $expectedOutc
         ],
     ])->create();
 
-    $objectToTest = new class {
+    $objectToTest = new class
+    {
         public string $value = '123';
     };
 
