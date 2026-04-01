@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.0.3 - 2026-04-01
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/41
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.0.2...5.0.3
+
 ## 5.0.2 - 2026-03-02
 
 ### What's Changed
