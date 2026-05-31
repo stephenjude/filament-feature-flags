@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource;
+
 return [
     // This package supports only class based features.
 
@@ -12,7 +15,7 @@ return [
     /*
      * Default scope: User::class, Team::class
      */
-    'scope' => App\Models\User::class,
+    'scope' => User::class,
 
     /*
      * Column names and data source that can be used to activate or deactivate for a segment of users.
@@ -26,7 +29,7 @@ return [
         [
             'column' => 'email',
             'source' => [
-                'model' => App\Models\User::class,
+                'model' => User::class,
                 'value' => 'email',
                 'key' => 'email',
             ],
@@ -67,6 +70,6 @@ return [
     ],
 
     'resources' => [
-        Stephenjude\FilamentFeatureFlag\Resources\FeatureSegmentResource::class,
+        FeatureSegmentResource::class,
     ],
 ];
