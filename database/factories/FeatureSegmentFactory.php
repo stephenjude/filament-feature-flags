@@ -3,10 +3,11 @@
 namespace Stephenjude\FilamentFeatureFlag\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Stephenjude\FilamentFeatureFlag\Models\FeatureSegment;
 
 class FeatureSegmentFactory extends Factory
 {
-    protected $model = YourModel::class;
+    protected $model = FeatureSegment::class;
 
     public function definition()
     {
