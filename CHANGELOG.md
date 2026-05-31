@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.1.0 - 2026-05-31
+
+### What's Changed
+
+* Add Laravel 13 support by @stephenjude in https://github.com/stephenjude/filament-feature-flags/pull/43
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.0.4...5.1.0
+
 ## 5.0.4 - 2026-04-22
 
 ### What's Changed
