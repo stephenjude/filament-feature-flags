@@ -43,9 +43,8 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
-        return [
+        $providers = [
             ActionsServiceProvider::class,
-            BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
             FilamentServiceProvider::class,
@@ -61,6 +60,14 @@ class TestCase extends Orchestra
             FeatureFlagPluginServiceProvider::class,
             TestPanelProvider::class,
         ];
+
+        // blade-capture-directive became a Filament dependency in v5.6.x.
+        // Skip it on older Filament installs where the package isn't present.
+        if (class_exists(BladeCaptureDirectiveServiceProvider::class)) {
+            array_unshift($providers, BladeCaptureDirectiveServiceProvider::class);
+        }
+
+        return $providers;
     }
 
     public function getEnvironmentSetUp($app)
