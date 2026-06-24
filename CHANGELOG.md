@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.1.1 - 2026-06-24
+
+### What's Changed
+
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/45
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.1.0...5.1.1
+
 ## 5.1.0 - 2026-05-31
 
 ### What's Changed
