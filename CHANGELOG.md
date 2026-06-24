@@ -2,6 +2,14 @@
 
 All notable changes to `filament-feature-flags` will be documented in this file.
 
+## 5.1.2 - 2026-06-24
+
+### What's Changed
+
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/stephenjude/filament-feature-flags/pull/44
+
+**Full Changelog**: https://github.com/stephenjude/filament-feature-flags/compare/5.1.1...5.1.2
+
 ## 5.1.1 - 2026-06-24
 
 ### What's Changed
